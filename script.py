@@ -1,0 +1,20 @@
+from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+api_key = os.getenv("api_key")
+client = OpenAI(api_key=api_key)
+
+def get_response(prompt):
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        max_completion_tokens=100
+    )
+    return response.choices[0].message.content
+
+print(get_response("tell me a something sad"))
