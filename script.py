@@ -17,4 +17,4 @@ def get_response(prompt):
     )
     return response.choices[0].message.content
 
-print(get_response("tell me a something sad"))
+print(get_response("tell me a something that i don't know about cows"))
